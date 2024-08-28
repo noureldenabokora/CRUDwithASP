@@ -1,0 +1,41 @@
+﻿@model List<DepartmentMV>
+
+
+
+<form method="post" asp-action="Create" asp-controller="Course">
+
+    <div>
+        <label>Degree</label>
+        <input type="number" name="degree" class="form-control" />
+        @*   @Html.TextBox("name",null ,new {@class= "from-control"})
+        @Html.TextBoxFor(a => a.departmentVM.FirstOrDefault().Name)
+        @Html.EditorFor(a => a.departmentVM[0].Name) *@
+
+    </div>
+    <div>
+        <label>Min Degree</label>
+        <input type="number" name="mindDegree" class="form-control" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" class="form-control" />
+
+    </div>
+    <div>
+        <label>Department</label>
+
+        <select name="DepartmentId" class="form-control">
+            @foreach (var item in Model)
+            {
+                <option value="@item.DeptID"> @item.Name</option>
+            }
+
+        </select>
+    </div>
+
+    <input type="submit" value="save" class="btn btn-primary" />
+
+</form>
+
+<a asp-action="GetAllCourses" asp-controller="Course" class="btn btn-primary">back to Courses</a>
+

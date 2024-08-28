@@ -1,0 +1,11 @@
+﻿@model Instructor
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model?.Name</h5>
+  @*       <h6 class="card-subtitle mb-2 text-muted">@Model?.Address</h6>
+        <h6 class="card-subtitle mb-2 text-muted">@Model?.course.Name</h6>
+        <h6 class="card-subtitle mb-2 text-muted">@Model?.department.Name</h6> *@
+@*         <a href="#" class="card-link">Card link</a>
+ *@        <a href="#" class="card-link" onclick="GetInstructorData(@Model?.Id)">Details</a>
+    </div>
+</div>

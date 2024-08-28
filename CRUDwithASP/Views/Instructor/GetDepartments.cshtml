@@ -1,0 +1,43 @@
+﻿@model List<Department>
+
+@{
+    ViewData["Title"] = "GetDepartments";
+    SelectList deptlist = new SelectList(Model, "Id", "Name");
+}
+
+<h1>GetDepartments</h1>
+
+<select id="DeptsID" asp-items="deptlist" class="form-control" onchange="GetInstructorsmethod()">
+            
+</select>
+
+<br />
+<br />
+<br />
+
+<select class="form-control" id="SelectedInst"></select>
+
+
+@section script
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function GetInstructorsmethod() {
+            var deptid = $("#DeptsID").val();
+            $("#SelectedInst").html("");
+            console.log(deptid);
+            //event.preventDefault();
+            $.ajax({
+                url: "/Instructor/GetInstructors" ,
+               data: { "DeptId": deptid },
+                success: function (result) {
+                      console.log(result);
+                    for (var item of result) {
+                        $("#SelectedInst").append("<option value=" + item.id + ">" + item.name + "</option>");  
+                    }
+                   // $("#div1").html(result);
+                }
+            });
+        }
+    </script>
+}
